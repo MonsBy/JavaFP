@@ -159,5 +159,10 @@ public class GestionAerolinea {
 
     public void mostrarIngresos(Avion avion) {
         // Código
+        int ingresos;
+        ingresos = 20;
+
+        System.out.printf("El avion %10s proporciona ingresos de %6f ", avion.getModelo(),ingresos);
+
     }
 }
