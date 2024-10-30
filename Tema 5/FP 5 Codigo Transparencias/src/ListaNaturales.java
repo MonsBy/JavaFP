@@ -4,11 +4,17 @@ public class ListaNaturales {
 	private int[] elementos;
 	private int ocupacion;
 
+	public int getOcupacion(){
+		return ocupacion;
+	}
+
 	public ListaNaturales(int capacidad){
 		CAPACIDAD = capacidad;
 		elementos = new int[CAPACIDAD];
 		ocupacion = 0;
 	}
+
+
 
 	public void anadir(int elemento) {
 		if (ocupacion < CAPACIDAD) {
@@ -33,6 +39,14 @@ public class ListaNaturales {
 			elementos[posicion] = elemento;
 			ocupacion++;
 		}
+	}
+
+	public void invertir() {
+
+	}
+
+	public boolean esSimetrica() {
+
 	}
 
 	public void eliminar(int posicion) {
