@@ -146,7 +146,7 @@ public class GestionAerolinea {
             for (int j = 0; j<avion.getButacasPorFila();j++){
                 Pasajero pasajero = Azar.generaPasajero();
                 System.out.printf("%-15s  %9s %2d años",pasajero.getNombre(),pasajero.getPasaporte(),pasajero.getEdad());
-                System.out.println();
+                System.out.println("");
             }
         }
 
