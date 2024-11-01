@@ -129,7 +129,7 @@ public class GestionAerolinea {
                 if (avion.getPasajero(i+1,j+1,clase)==null){
                     Pasajero pasajero = Azar.generaPasajero();
                     Asiento asiento = avion.reservarAsiento(i+1,j+1,clase,pasajero);
-                    System.out.println("Reservado el asiento "+asiento + " de clase" + clase + " al pasajero "+ pasajero);
+                    System.out.println("Reservado el asiento "+asiento + " de clase" + clase + " al pasajero "+ pasajero.getNombre());
                     return;
                 }
             }
@@ -142,11 +142,22 @@ public class GestionAerolinea {
         System.out.println("Lista de pasajeros de la clase Business");
 
         for (int i = 0; i<avion.getNumeroFilas(Clase.BUSINESS);i++){
-            System.out.println("Fila "+avion.getNumeroFilas(Clase.BUSINESS));
+            System.out.println("Fila "+ i );
             for (int j = 0; j<avion.getButacasPorFila();j++){
                 Pasajero pasajero = Azar.generaPasajero();
                 System.out.printf("%-15s  %9s %2d años",pasajero.getNombre(),pasajero.getPasaporte(),pasajero.getEdad());
                 System.out.println("");
+            }
+        }
+        System.out.println();
+
+        System.out.println("Lista de paasajeros de la clase Turista");
+        for (int i = 0; i<avion.getNumeroFilas(Clase.TURISTA); i++){
+            System.out.println("Fila "+ i );
+            for(int j = 0; j<avion.getButacasPorFila();j++){
+                Pasajero pasajero = Azar.generaPasajero();
+                System.out.printf("%-15s  %9s %2d años",pasajero.getNombre(),pasajero.getPasaporte(),pasajero.getEdad());
+                System.out.println();
             }
         }
 
@@ -155,6 +166,28 @@ public class GestionAerolinea {
 
     public void mostrarPasajeros(Avion avion, int edad) {
         // Código
+        System.out.println("Avion "+avion.getModelo());
+        System.out.println("Lista de pasajeros menores de " + edad + " de la clase Business");
+        for (int i = 0 ; i<avion.getNumeroFilas(Clase.BUSINESS); i++){
+            for (int j = 0 ; j<avion.getButacasPorFila();j++){
+                Pasajero pasajero = Azar.generaPasajero();
+                if (pasajero.getEdad()<edad){
+                    System.out.println(pasajero.getNombre()+" "+pasajero.getEdad());
+
+                }
+            }
+        }
+        System.out.println("Lista de pasajeors menores de "+edad+ " de la clase Turista");
+        for (int i = 0; i<avion.getNumeroFilas(Clase.TURISTA);i++){
+            for (int j = 0; j<avion.getButacasPorFila();j++){
+               Pasajero pasajero = Azar.generaPasajero();
+               if(pasajero.getEdad()<edad){
+                   System.out.println(pasajero.getNombre()+" "+pasajero.getEdad());
+
+               }
+            }
+        }
+
     }
 
     public void mostrarIngresos(Avion avion) {
