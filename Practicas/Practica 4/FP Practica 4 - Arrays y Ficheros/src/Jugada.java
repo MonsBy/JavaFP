@@ -48,12 +48,36 @@ public class Jugada {
     }
 
     public Pistas comprobar(Jugada oculta) {
-    int exactas = 0;
-    int coincidencias = 0;
+    int exactas = 0 ;
+    int descolocadas  = 0;
 
+    boolean[] marcadosActual = new boolean[fichas.length];
     boolean[] marcadosOculta = new boolean[oculta.fichas.length];
-    boolean[] marcadosJugada = new boolean[fichas.length];
-    return null;
+
+    // Calculo las fichas colocadas excatas
+    for (int i = 0; i < fichas.length; i++){
+        if (fichas[i] == oculta.fichas[i]) {
+            exactas++;
+            marcadosActual[i] = true; // Marco la ficha actual como utilizada
+            marcadosOculta[i] = true; // Marco la ficha de la jugada oculta como utilizada
+        }
+    }
+
+    //Calculo las fichas decolocadas
+    for (int i = 0; i < fichas.length; i++) {
+        if (!marcadosActual[i]) {
+            for (int j = 0; j < oculta.fichas.length; j++) {
+                if (!marcadosOculta[j] && fichas[i] == oculta.fichas[j]) {
+                    descolocadas++;
+                    marcadosActual[i] = true;
+                    marcadosOculta[j] = true;
+                }
+            }
+        }
+    }
+
+    return new Pistas(exactas, descolocadas);
+
     }
 
     public void visualizar() {
