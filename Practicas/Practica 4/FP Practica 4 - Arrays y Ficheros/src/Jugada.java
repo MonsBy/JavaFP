@@ -1,6 +1,9 @@
+import java.util.Random;
+
 enum Color {
     ROJO, VERDE, AMARILLO, PURPURA
 }
+
 
 public class Jugada {
     private static final String ANSI_RED = "\u001B[31m";
@@ -13,16 +16,44 @@ public class Jugada {
     private Color[] fichas;
 
     public Jugada(String cadena) {
-        // TODO
+    fichas = new Color[cadena.length()];
+    for(int i = 0; i < cadena.length(); i++) {
+        switch(cadena.charAt(i)) {
+            case 'R':
+                fichas[i] = Color.ROJO;
+                break;
+            case 'V':
+                fichas[i] = Color.VERDE;
+                break;
+            case 'A':
+                fichas[i] = Color.AMARILLO;
+                break;
+            case 'P':
+                fichas[i] = Color.PURPURA;
+                break;
+            default:
+                throw new IllegalArgumentException("Color no valido: "+ cadena.charAt(i));
+        }
+    }
+
     }
 
     public Jugada(int numFichas) {
-        // TODO
+    Random random = new Random();
+    Color[] colores = Color.values();
+    fichas = new Color[numFichas];
+    for (int i = 0 ; i < numFichas; i++) {
+        fichas[i] = colores[random.nextInt(colores.length)];
+    }
     }
 
     public Pistas comprobar(Jugada oculta) {
-        return null;  // Eliminar esta línea antes de codificar el método.
-        // TODO
+    int exactas = 0;
+    int coincidencias = 0;
+
+    boolean[] marcadosOculta = new boolean[oculta.fichas.length];
+    boolean[] marcadosJugada = new boolean[fichas.length];
+    return null;
     }
 
     public void visualizar() {
