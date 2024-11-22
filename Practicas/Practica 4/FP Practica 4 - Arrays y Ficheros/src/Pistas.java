@@ -23,6 +23,10 @@ public class Pistas {
         }
     }
 
+    public int getDescolocados() {
+        return descolocados;
+    }
+
     public int getAciertos() {
         return aciertos;
     }
