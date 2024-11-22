@@ -48,7 +48,7 @@ public class Jugada {
     }
 
     public Pistas comprobar(Jugada oculta) {
-    int exactas = 0 ;
+    int exactas = 0;
     int descolocadas  = 0;
 
     boolean[] marcadosActual = new boolean[fichas.length];

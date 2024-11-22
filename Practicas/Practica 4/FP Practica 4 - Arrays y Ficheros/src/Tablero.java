@@ -6,35 +6,49 @@ public class Tablero {
     private int numJugadas;
 
     public Tablero() {
-       // TODO
+    this.jugadas = new Jugada[MAX_JUGADAS];
+    this.pistas = new Pistas[MAX_JUGADAS];
+    this.numJugadas = 0;
     }
 
     public int getNumJugadas() {
-        return 0;  // Eliminar esta línea al implementar el método
-        // TODO
+    return numJugadas;
     }
 
     public Jugada[] getJugadas() {
-        return null;   // Eliminar esta línea al implementar el método
-        // TODO
+    return jugadas;
     }
 
     public Pistas[] getResultados() {
-        return null;   // Eliminar esta línea al implementar el método
-        // TODO
+    return pistas;
     }
 
-    public void insertar(Jugada jugada, Pistas pistas) {
-        // TODO
+    public void insertar(Jugada jugada, Pistas pista) {
+    if(numJugadas < MAX_JUGADAS) {
+        jugadas[numJugadas] = jugada;
+        pistas[numJugadas] = pista;
+        numJugadas++;
+    } else {
+        throw new IllegalStateException("El tablero ya esta completo. No se puede meter mas");
+    }
     }
 
     public boolean completo() {
-        return false;   // Eliminar esta línea al implementar el método
-        // TODO
+    return numJugadas >= MAX_JUGADAS;
     }
 
     public void visualizar() {
-        // TODO
+        System.out.println("Estado del tablero");
+        for (int i = 0; i < numJugadas; i++) {
+            System.out.print("Jugada "+(i+1)+": ");
+            jugadas[i].visualizar();
+            System.out.println(" -> ");
+            pistas[i].visualizar();
+            System.out.println();
+        }
+        if(numJugadas == 0) {
+            System.out.println("No hay jugadas");
+        }
     }
 
 
