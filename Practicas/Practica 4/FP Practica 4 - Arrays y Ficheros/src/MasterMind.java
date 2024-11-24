@@ -74,8 +74,7 @@ public class MasterMind {
     // Lógica principal del juego
     public void jugar() {
         while (true) {
-            System.out.print("Introduce jugada o G (guardar la partida): ");
-            String entrada = Teclado.leerJugadaGuardar();
+            String entrada = Teclado.leerJugadaGuardar(numFichas, "Introduce tu jugada o G para guardar: ");
 
             if (entrada.equalsIgnoreCase("G")) {
                 String nombreArchivo = Teclado.leerString("Nombre del archivo: ");
@@ -100,6 +99,7 @@ public class MasterMind {
             }
         }
     }
+
 
     public Tablero getTablero() {
         return tablero;
